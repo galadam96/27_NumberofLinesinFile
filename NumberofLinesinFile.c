@@ -3,17 +3,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#define FILENAME "myfile.txt"
 int main() {
 
 	int numOfLine = 0;
 	int c;
 	FILE* pFile = NULL;
 
-	pFile = fopen("myfile.txt", "r"); //Saving address of returned value to pointer
+	pFile = fopen(FILENAME, "r"); //Saving address of returned value to pointer
 
 	if (pFile == NULL) {
 		perror("There was an error opening the file:");
-		return -1;
+		exit(1); //stops the whole program instant, return only exits the block 
 	}
 
 	while ((c= fgetc(pFile)) != EOF) {
